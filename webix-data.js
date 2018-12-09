@@ -7,7 +7,7 @@ var mysqlcredentials = {
     password: "root",
     database: "webix"
 }
-var con = mysq.createConnection(mysqlcredentials);
+var con = mysql.createConnection(mysqlcredentials);
 con.connect(function(error) {
     if(error) throw error;
     console.log("mysql connected");
