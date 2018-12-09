@@ -17,6 +17,7 @@ app.get("/",function(req,res) {
     console.log("welcome");
     con.query("select * from data",function(error,result) {
         console.log(result);
+        res.json(result);
     });
 });
 app.listen("3000",function() {
