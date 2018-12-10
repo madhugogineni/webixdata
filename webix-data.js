@@ -1,6 +1,8 @@
 var express = require('express');
 var mysql = require('mysql');
 var app = express();
+var cors = require('cors')
+app.use(cors())
 var mysqlcredentials = {
     host: "localhost",
     user: "root",
