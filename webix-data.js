@@ -30,6 +30,7 @@ app.get("/filter", function (req, res) {
     var save = req.query.save;
     var places = req.query.places;
     var status = req.query.status;
+    console.log(direction)
     var key = null,value = null;
     if(direction == undefined) {
         key = "direction";
