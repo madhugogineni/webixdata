@@ -54,6 +54,7 @@ app.get("/filter", function (req, res) {
     console.log("select * from data where "+key+" like "+value);
     con.query("select * from data where "+key+" like "+value, function (error, result) {
         //date,price,save,palces,status
+        console.log(result);
         res.json(result);
     });
 });
