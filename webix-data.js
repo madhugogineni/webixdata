@@ -22,6 +22,13 @@ app.get("/",function(req,res) {
         res.json(result);
     });
 });
+app.get("/filter",function(req,res) {
+    console.log("welcome");
+    con.query("select * from data",function(error,result) {
+        console.log(result);
+        res.json(result);
+    });
+});
 app.listen("3000",function() {
     console.log("connnected to port 4000");
 })
