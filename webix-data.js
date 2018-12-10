@@ -32,22 +32,22 @@ app.get("/filter", function (req, res) {
     var status = req.query.status;
     console.log(direction)
     var key = null,value = null;
-    if(direction == undefined) {
+    if(direction != undefined) {
         key = "direction";
         value = "%"+direction+"%";
-    }else if(date == undefined) {
+    }else if(date != undefined) {
         key = "date";
         value = "%"+date+"%";
-    }else if(price == undefined) {
+    }else if(price != undefined) {
         key = "price";
         value = "%"+price+"%";
-    }else if(save == undefined) {
+    }else if(save != undefined) {
         key = "save";
         value = "%"+save+"%";
-    }else if(places == undefined) {
+    }else if(places != undefined) {
         key = "places";
         value = "%"+places+"%";
-    }else if(status == undefined) {
+    }else if(status != undefined) {
         key = "status";
         value = "%"+status+"%";
     }
