@@ -31,7 +31,7 @@ app.get("/filter", function (req, res) {
     var places = req.query.places;
     var status = req.query.status;
     console.log(direction)
-    var key = null,value = null;
+    var key = null,value = null,finalQuery= null;
     if(direction != undefined) {
         key = "direction";
         value = "'%"+direction+"%'";
@@ -51,10 +51,14 @@ app.get("/filter", function (req, res) {
         key = "status";
         value = "'%"+status+"%'";
     }
-    console.log("value = "+value);
+    if(key == null && value == null) {
+        finalQuery = "select * from data";
+    }else {
+        finalQuery = "select * from data where "+key+" like "+value;
+    }//"select * from data where "+key+" like "+value
+    console.log("key = "+key+" value = "+value);
     console.log("select * from data where "+key+" like "+value);
-    console.log("SELECT * FROM Customers WHERE CustomerName LIKE '%moreno%'");
-    con.query("select * from data where "+key+" like "+value, function (error, result) {
+    con.query(finalQuery, function (error, result) {
         //date,price,save,palces,status
         if(error) throw error;
         console.log(result);
