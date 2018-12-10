@@ -25,7 +25,7 @@ app.get("/",function(req,res) {
 app.get("/filter",function(req,res) {
     console.log("welcome");
     con.query("select * from data",function(error,result) {
-        var id = req.query.id;
+        var id = req.query.direction;
         console.log(id);
         res.json(result);
     });
