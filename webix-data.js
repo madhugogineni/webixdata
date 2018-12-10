@@ -34,22 +34,22 @@ app.get("/filter", function (req, res) {
     var key = null,value = null;
     if(direction != undefined) {
         key = "direction";
-        value = "%"+direction+"%";
+        value = "'%"+direction+"%'";
     }else if(date != undefined) {
         key = "date";
-        value = "%"+date+"%";
+        value = "'%"+date+"%'";
     }else if(price != undefined) {
         key = "price";
-        value = "%"+price+"%";
+        value = "'%"+price+"%'";
     }else if(save != undefined) {
         key = "save";
-        value = "%"+save+"%";
+        value = "'%"+save+"%'";
     }else if(places != undefined) {
         key = "places";
-        value = "%"+places+"%";
+        value = "'%"+places+"%'";
     }else if(status != undefined) {
         key = "status";
-        value = "%"+status+"%";
+        value = "'%"+status+"%'";
     }
     console.log("value = "+value);
     console.log("select * from data where "+key+" like "+value);
