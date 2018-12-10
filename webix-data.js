@@ -52,6 +52,8 @@ app.get("/filter", function (req, res) {
         value = "%"+status+"%";
     }
     console.log("value = "+value);
+    console.log("select * from data where "+key+" like "+value);
+    console.log("SELECT * FROM Customers WHERE CustomerName LIKE '%moreno%'");
     con.query("select * from data where "+key+" like "+value, function (error, result) {
         //date,price,save,palces,status
         if(error) throw error;
