@@ -23,14 +23,14 @@ app.get("/", function (req, res) {
     });
 });
 app.get("/filter", function (req, res) {
-    console.log("welcome");
+    // console.log("welcome");
     var direction = req.query.direction;
     var date = req.query.date;
     var price = req.query.price;
     var save = req.query.save;
     var places = req.query.places;
     var status = req.query.status;
-    console.log(direction)
+    // console.log(direction)
     var key = null,value = null,finalQuery= null;
     if(direction != undefined) {
         key = "direction";
@@ -56,27 +56,21 @@ app.get("/filter", function (req, res) {
     }else {
         finalQuery = "select * from data where "+key+" like "+value;
     }//"select * from data where "+key+" like "+value
-    console.log("key = "+key+" value = "+value);
-    console.log("select * from data where "+key+" like "+value);
+    // console.log("key = "+key+" value = "+value);
+    // console.log("select * from data where "+key+" like "+value);
     con.query(finalQuery, function (error, result) {
         //date,price,save,palces,status
         if(error) throw error;
-        console.log(result);
+        //console.log(result);
         res.json(result);
     });
 });
 app.post("/sortdata",function(req,res) {
-    var body = req.body;
-    var params = req.params
-    console.log("---------------------------------------------------------------------------------------------------------------------------------");
-    console.log(req.body);
-    console.log(body);
-    console.log("*********************************************************************************************************************************");
-    console.log(req.params);
-    console.log(params);
-    console.log("---------------------------------------------------------------------------------------------------------------------------------");
+    var data = req.body;
+    console.log("-------------------");
+    console.log(data);
     res.send("welcome");
 })
 app.listen("3000", function () {
     console.log("connnected to port 4000");
-})
+});
