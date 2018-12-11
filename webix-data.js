@@ -23,8 +23,9 @@ app.get("/", function (req, res) {
     });
 });
 app.get("/filter", function (req, res) {
-    // console.log("welcome");
+    console.log(req.query);
     var direction = req.query.direction;
+    
     var date = req.query.date;
     var price = req.query.price;
     var save = req.query.save;
@@ -63,6 +64,7 @@ app.get("/filter", function (req, res) {
         if(error) throw error;
         //console.log(result);
         res.json(result);
+        
     });
 });
 app.post("/sortdata",function(req,res) {
