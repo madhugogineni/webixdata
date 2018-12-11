@@ -67,8 +67,10 @@ app.get("/filter", function (req, res) {
 });
 app.post("/sortdata",function(req,res) {
     var body = req.body;
+    var post = req.post;
     console.log("---------------------------------------------------------------------------------------------------------------------------------");
     console.log(req.body);
+    console.log(post);
     console.log("---------------------------------------------------------------------------------------------------------------------------------");
 })
 app.listen("3000", function () {
