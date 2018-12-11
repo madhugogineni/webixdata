@@ -66,9 +66,9 @@ app.get("/filter", function (req, res) {
     });
 });
 app.post("/sortdata",function(req,res) {
-    var body = req.query;
+    var body = req.body;
     console.log("---------------------------------------------------------------------------------------------------------------------------------");
-    console.log(body);
+    console.log(req.body);
     console.log("---------------------------------------------------------------------------------------------------------------------------------");
 })
 app.listen("3000", function () {
