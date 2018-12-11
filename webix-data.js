@@ -67,11 +67,15 @@ app.get("/filter", function (req, res) {
 });
 app.post("/sortdata",function(req,res) {
     var body = req.body;
-    var post = req.post;
+    var params = req.params
     console.log("---------------------------------------------------------------------------------------------------------------------------------");
     console.log(req.body);
-    console.log(post);
+    console.log(body);
+    console.log("*********************************************************************************************************************************");
+    console.log(req.params);
+    console.log(params);
     console.log("---------------------------------------------------------------------------------------------------------------------------------");
+    res.send("welcome");
 })
 app.listen("3000", function () {
     console.log("connnected to port 4000");
