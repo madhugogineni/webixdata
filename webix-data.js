@@ -24,41 +24,53 @@ app.get("/", function (req, res) {
 });
 app.get("/filter", function (req, res) {
     console.log(req.query);
-    var direction = req.query.direction;
+    var query = null,conditionalQuery = null;
+    // var direction = req.query.direction;
     
-    var date = req.query.date;
-    var price = req.query.price;
-    var save = req.query.save;
-    var places = req.query.places;
-    var status = req.query.status;
-    // console.log(direction)
-    var key = null,value = null,finalQuery= null;
-    if(direction != undefined) {
-        key = "direction";
-        value = "'%"+direction+"%'";
-    }else if(date != undefined) {
-        key = "date";
-        value = "'%"+date+"%'";
-    }else if(price != undefined) {
-        key = "price";
-        value = "'%"+price+"%'";
-    }else if(save != undefined) {
-        key = "save";
-        value = "'%"+save+"%'";
-    }else if(places != undefined) {
-        key = "places";
-        value = "'%"+places+"%'";
-    }else if(status != undefined) {
-        key = "status";
-        value = "'%"+status+"%'";
-    }
-    if(key == null && value == null) {
-        finalQuery = "select * from data";
-    }else {
-        finalQuery = "select * from data where "+key+" like "+value;
-    }//"select * from data where "+key+" like "+value
+    // var date = req.query.date;
+    // var price = req.query.price;
+    // var save = req.query.save;
+    // var places = req.query.places;
+    // var status = req.query.status;
+    // // console.log(direction)
+    // var key = null,value = null,finalQuery= null;
+    // if(direction != undefined) {
+    //     key = "direction";
+    //     value = "'%"+direction+"%'";
+    // }else if(date != undefined) {
+    //     key = "date";
+    //     value = "'%"+date+"%'";
+    // }else if(price != undefined) {
+    //     key = "price";
+    //     value = "'%"+price+"%'";
+    // }else if(save != undefined) {
+    //     key = "save";
+    //     value = "'%"+save+"%'";
+    // }else if(places != undefined) {
+    //     key = "places";
+    //     value = "'%"+places+"%'";
+    // }else if(status != undefined) {
+    //     key = "status";
+    //     value = "'%"+status+"%'";
+    // }
+    // if(key == null && value == null) {
+    //     finalQuery = "select * from data";
+    // }else {
+    //     finalQuery = "select * from data where "+key+" like "+value;
+    // }
+    //"select * from data where "+key+" like "+value
     // console.log("key = "+key+" value = "+value);
     // console.log("select * from data where "+key+" like "+value);
+
+
+    var sort = req.query.sort;
+    var filter = req.query.filter;
+    if(filter != null) {
+        console.log(filter); 
+    }
+    for(var i=0;i< filter.length;i++) {
+        console.log(filter[i]);
+    }
     con.query(finalQuery, function (error, result) {
         //date,price,save,palces,status
         if(error) throw error;
@@ -67,12 +79,6 @@ app.get("/filter", function (req, res) {
         
     });
 });
-app.post("/sortdata",function(req,res) {
-    var data = req.body;
-    console.log("-------------------");
-    console.log(data);
-    res.send("welcome");
-})
 app.listen("3000", function () {
     console.log("connnected to port 4000");
 });
