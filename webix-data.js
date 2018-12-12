@@ -65,7 +65,9 @@ app.get("/filter", function (req, res) {
 
     var sort = req.query.sort;
     var filter = req.query.filter;
+    console.log("----------------------------------------------------------------------------------------------------------------------------");
     console.log(sort);
+    console.log("----------------------------------------------------------------------------------------------------------------------------");
     if (filter != undefined) {
         count = 0;
         for (var key in filter) {
