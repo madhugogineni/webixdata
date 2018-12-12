@@ -97,26 +97,27 @@ app.get("/filter", function (req, res) {
             console.log("not null");
             var data = result;
             // var data = Object.values(result);
-            for(var key in sort) {
+            for (var key in sort) {
                 // console.log(keys);
-                var singleKey = key; 
-                function compare(a,b) {
+                var singleKey = key;
+                function compare(a, b) {
                     if (a[singleKey] < b[singleKey])
-                      return -1;
+                        return -1;
                     if (a[singleKey] > b[singleKey])
-                      return 1;
+                        return 1;
                     return 0;
-                  }
-                  data.sort(compare);
-                  console.log(data);
-                  if(sort[singleKey] == "asc") {
-                      res.json(data);
-                  }else if(sort[singleKey] == "desc"){
-                      data.reverse();
-                      res.json(data);
-                  }else {
-                      console.log("welcome");
-                  }
+                }
+                data.sort(compare);
+                //console.log(data);
+                if (sort[singleKey] == "asc") {
+                    console.log("asc");
+                    res.json(data);
+                    console.log(data);
+                } else if (sort[singleKey] == "desc") {
+                    console.log("desc");
+                    data.reverse();
+                    res.json(data);
+                }
 
             }
         } else {
