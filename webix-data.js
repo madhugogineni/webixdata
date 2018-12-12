@@ -66,7 +66,7 @@ app.get("/filter", function (req, res) {
     var sort = req.query.sort;
     var filter = req.query.filter;
     if (filter != undefined) {
-        for (var key in validation_messages) {
+        for (var key in filter) {
         console.log(key+" = "+filter[key]);
         } 
     } else {
