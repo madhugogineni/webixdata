@@ -92,7 +92,7 @@ app.get("/filter", function (req, res) {
         }
     }
 
-
+    console.log("select * from data" + conditionalString + sortingString);
     con.query("select * from data" + conditionalString + sortingString, function (error, result) {
         //date,price,save,palces,status
         if (error) throw error;
