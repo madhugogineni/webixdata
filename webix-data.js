@@ -65,12 +65,14 @@ app.get("/filter", function (req, res) {
 
     var sort = req.query.sort;
     var filter = req.query.filter;
-    if(filter != null) {
-        console.log(filter); 
-    }
-    for(var i=0;i< filter.length;i++) {
-        console.log(filter[i]);
-    }
+    if(filter != null && filter != undefined) {
+        
+        for(var i=0;i< filter.length;i++) {
+            console.log(filter[i]);
+        } 
+    } else {
+    
+    
     con.query(finalQuery, function (error, result) {
         //date,price,save,palces,status
         if(error) throw error;
