@@ -75,7 +75,7 @@ app.get("/filter", function (req, res) {
     }
 
 
-    con.query(finalQuery, function (error, result) {
+    con.query("select * from data", function (error, result) {
         //date,price,save,palces,status
         if (error) throw error;
         //console.log(result);
