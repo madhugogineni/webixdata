@@ -71,11 +71,11 @@ app.get("/filter", function (req, res) {
             console.log(key + " = " + filter[key]);
             if (filter[key] != "") {
                 if (count == 0) {
-                    conditionalString = " where "+key+" like '%"+filter[key]+"%'";
+                    conditionalString = conditionalString + " where " + key + " like '%" + filter[key] + "%'";
                 } else if (count > 0) {
-                    conditionalString = " and "+key+" like '%"+filter[key]+"%'";
+                    conditionalString = conditionalString + " and " + key + " like '%" + filter[key] + "%'";
                 }
-                count ++;
+                count++;
             }
         }
         console.log(conditionalString);
