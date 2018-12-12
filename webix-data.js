@@ -24,7 +24,7 @@ app.get("/", function (req, res) {
 });
 app.get("/filter", function (req, res) {
     console.log(req.query);
-    var query = null, count = 0, conditionalString = null;
+    var query = null, count = 0, conditionalString = "";
     // var direction = req.query.direction;
 
     // var date = req.query.date;
@@ -85,7 +85,7 @@ app.get("/filter", function (req, res) {
     }
 
 
-    con.query("select * from data", function (error, result) {
+    con.query("select * from data" + conditionalString, function (error, result) {
         //date,price,save,palces,status
         if (error) throw error;
         //console.log(result);
