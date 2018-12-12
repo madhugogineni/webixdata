@@ -65,11 +65,10 @@ app.get("/filter", function (req, res) {
 
     var sort = req.query.sort;
     var filter = req.query.filter;
-    if (filter != null && filter != undefined) {
-
-        for (var i = 0; i < filter.length; i++) {
-            console.log(filter[i]);
-        }
+    if (filter != undefined) {
+        for (var key in validation_messages) {
+        console.log(key+" = "+filter[key]);
+        } 
     } else {
         console.log("filter is null");
     }
@@ -80,7 +79,6 @@ app.get("/filter", function (req, res) {
         if (error) throw error;
         //console.log(result);
         res.json(result);
-
     });
 });
 app.listen("3000", function () {
