@@ -92,7 +92,22 @@ app.get("/filter", function (req, res) {
         //console.log(result);
         // var data = result;
         if (sort != undefined) {
-            console.log("not null")
+            console.log("not null");
+            var data = result;
+            // var data = Object.values(result);
+            for(var key in sort) {
+                // console.log(keys);
+                var singleKey = key; 
+                function compare(a,b) {
+                    if (a[singleKey] < b[singleKey])
+                      return -1;
+                    if (a[singleKey] > b[singleKey])
+                      return 1;
+                    return 0;
+                  }
+                  data.sort(compare);
+                  console.log(data);   
+            }
         } else {
             res.json(result);
         }
