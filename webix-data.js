@@ -24,7 +24,7 @@ app.get("/", function (req, res) {
 });
 app.get("/filter", function (req, res) {
     console.log(req.query);
-    var query = null, conditionalQuery = null;
+    var query = null, count = 0, conditionalString = null;
     // var direction = req.query.direction;
 
     // var date = req.query.date;
@@ -66,9 +66,19 @@ app.get("/filter", function (req, res) {
     var sort = req.query.sort;
     var filter = req.query.filter;
     if (filter != undefined) {
+        count = 0;
         for (var key in filter) {
-        console.log(key+" = "+filter[key]);
-        } 
+            console.log(key + " = " + filter[key]);
+            if (filter[key] != "") {
+                if (count == 0) {
+                    conditionalString = " where "+key+" like '%"+filter[key]+"%'";
+                } else if (count > 0) {
+                    conditionalString = " and "+key+" like '%"+filter[key]+"%'";
+                }
+                count ++;
+            }
+        }
+        console.log(conditionalString);
     } else {
         console.log("filter is null");
     }
