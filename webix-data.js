@@ -24,9 +24,9 @@ app.get("/", function (req, res) {
 });
 app.get("/filter", function (req, res) {
     console.log(req.query);
-    var query = null,conditionalQuery = null;
+    var query = null, conditionalQuery = null;
     // var direction = req.query.direction;
-    
+
     // var date = req.query.date;
     // var price = req.query.price;
     // var save = req.query.save;
@@ -65,20 +65,22 @@ app.get("/filter", function (req, res) {
 
     var sort = req.query.sort;
     var filter = req.query.filter;
-    if(filter != null && filter != undefined) {
-        
-        for(var i=0;i< filter.length;i++) {
+    if (filter != null && filter != undefined) {
+
+        for (var i = 0; i < filter.length; i++) {
             console.log(filter[i]);
-        } 
+        }
     } else {
-    
-    
+        console.log("filter is null");
+    }
+
+
     con.query(finalQuery, function (error, result) {
         //date,price,save,palces,status
-        if(error) throw error;
+        if (error) throw error;
         //console.log(result);
         res.json(result);
-        
+
     });
 });
 app.listen("3000", function () {
