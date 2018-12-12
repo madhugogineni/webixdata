@@ -88,7 +88,7 @@ app.get("/filter", function (req, res) {
     }
     if (sort != undefined) {
         for (var keys in sort) {
-            sortingString = " orderby '" + keys+"'";
+            sortingString = " order by " + keys;
         }
     }
 
