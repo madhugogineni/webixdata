@@ -24,7 +24,7 @@ app.get("/", function (req, res) {
 });
 app.get("/filter", function (req, res) {
     console.log(req.query);
-    var query = null, count = 0, conditionalString = "";
+    var query = null, count = 0, conditionalString = "", sortingString = "";
     // var direction = req.query.direction;
 
     // var date = req.query.date;
@@ -86,43 +86,20 @@ app.get("/filter", function (req, res) {
     } else {
         console.log("filter is null");
     }
+    if (sort != undefined) {
+        for (var keys in sort) {
+            sortingString = " orderby " + keys;
+        }
+    }
 
 
-    con.query("select * from data" + conditionalString, function (error, result) {
+    con.query("select * from data" + conditionalString + sortingString, function (error, result) {
         //date,price,save,palces,status
         if (error) throw error;
         //console.log(result);
         // var data = result;
-        if (sort != undefined) {
-            console.log("not null");
-            var data = result;
-            // var data = Object.values(result);
-            for (var key in sort) {
-                // console.log(keys);
-                var singleKey = key;
-                function compare(a, b) {
-                    if (a[singleKey] < b[singleKey])
-                        return -1;
-                    if (a[singleKey] > b[singleKey])
-                        return 1;
-                    return 0;
-                }
-                data.sort(compare);
-                //console.log(data);
-                if (sort[singleKey] == "asc") {
-                    console.log("asc");
-                    res.json(data);
-                    console.log(data);
-                } else if (sort[singleKey] == "desc") {
-                    console.log("desc");
-                    data.reverse();
-                    res.json(data);
-                }
 
-            }
-        } else {
-            res.json(result);
-        }
+        res.json(result);
     });
 });
 app.listen("3000", function () {
