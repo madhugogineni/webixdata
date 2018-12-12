@@ -88,8 +88,9 @@ app.get("/filter", function (req, res) {
     }
     if (sort != undefined) {
         for (var keys in sort) {
-            sortingString = " order by " + keys;
+            var sortingOrder = "";
         }
+        sortingString = " order by " + keys + " " + sort[keys];
     }
 
     console.log("select * from data" + conditionalString + sortingString);
