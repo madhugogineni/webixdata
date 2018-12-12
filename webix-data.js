@@ -65,6 +65,7 @@ app.get("/filter", function (req, res) {
 
     var sort = req.query.sort;
     var filter = req.query.filter;
+    console.log(sort);
     if (filter != undefined) {
         count = 0;
         for (var key in filter) {
@@ -83,12 +84,18 @@ app.get("/filter", function (req, res) {
     } else {
         console.log("filter is null");
     }
-
+    
 
     con.query("select * from data" + conditionalString, function (error, result) {
         //date,price,save,palces,status
         if (error) throw error;
         //console.log(result);
+        // var data = result;
+        // for (var keys in sort) {
+        //     if(sort[keys] != "") {
+        //         if(sort[keys] == "")
+        //     }
+        // }
         res.json(result);
     });
 });
