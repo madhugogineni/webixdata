@@ -84,19 +84,18 @@ app.get("/filter", function (req, res) {
     } else {
         console.log("filter is null");
     }
-    
+
 
     con.query("select * from data" + conditionalString, function (error, result) {
         //date,price,save,palces,status
         if (error) throw error;
         //console.log(result);
         // var data = result;
-        // for (var keys in sort) {
-        //     if(sort[keys] != "") {
-        //         if(sort[keys] == "")
-        //     }
-        // }
-        res.json(result);
+        if (sort != undefined) {
+            console.log("not null")
+        } else {
+            res.json(result);
+        }
     });
 });
 app.listen("3000", function () {
