@@ -106,7 +106,16 @@ app.get("/filter", function (req, res) {
                     return 0;
                   }
                   data.sort(compare);
-                  console.log(data);   
+                  console.log(data);
+                  if(sort[singleKey] == "asc") {
+                      res.json(data);
+                  }else if(sort[singleKey] == "desc"){
+                      data.reverse();
+                      res.json(data);
+                  }else {
+                      console.log("welcome");
+                  }
+
             }
         } else {
             res.json(result);
